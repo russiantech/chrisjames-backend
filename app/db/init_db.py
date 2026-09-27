@@ -623,7 +623,9 @@ async def seed_roles(db) -> dict[str, Role]:
                     await db.flush()
             except IntegrityError:
                 # Another concurrent cold start created this role first.
-                db.expunge(role)
+                # SQLAlchemy already expunges `role` from the session when
+                # the SAVEPOINT rolls back after the failed flush — do not
+                # expunge it again here, that raises InvalidRequestError.
                 role = await db.scalar(select(Role).where(Role.name == name))
                 if role is None:  # pragma: no cover - shouldn't happen
                     raise
@@ -675,7 +677,9 @@ async def seed_owner(db, roles: dict[str, Role]) -> User:
     except IntegrityError:
         # Lost the race to another cold start seeding the same owner row
         # (on email OR username — either constraint can fire first).
-        db.expunge(owner)
+        # SQLAlchemy already expunges `owner` from the session when the
+        # SAVEPOINT rolls back after the failed flush — do not expunge it
+        # again here, that raises InvalidRequestError.
         owner = await db.scalar(select(User).where(User.email == owner_email))
         if owner is None:
             owner = await db.scalar(
@@ -1116,3 +1120,4 @@ async def initialise() -> None:
         await seed_commerce(db)
         await seed_blog(db, owner)
     logger.info("Database ready.")
+

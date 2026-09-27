@@ -204,6 +204,7 @@ class Settings(BaseSettings):
     # ------------------------------------------------------------------- cors
     # Comma-separated string in env: CORS_ORIGINS="https://a.com,https://b.com"
     CORS_ORIGINS: list[str] = [
+        "chrisjames.vercel.app",
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:4173",
@@ -258,7 +259,7 @@ class Settings(BaseSettings):
     DEFAULT_CURRENCY: str = "USD"
 
     # --------------------------------------------------------------- bootstrap
-    FIRST_SUPERUSER_EMAIL: str = "admin@chrisjames.dev"
+    FIRST_SUPERUSER_EMAIL: str = OWNER_EMAIL
     FIRST_SUPERUSER_USERNAME: str = "chrisjames"
     # No default password — must be supplied or the app refuses to boot.
     FIRST_SUPERUSER_PASSWORD: str

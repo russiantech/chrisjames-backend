@@ -184,3 +184,10 @@ class TestimonialWrite(Schema):
     is_featured: bool = False
     is_published: bool = True
     position: int = 0
+
+
+class ReorderPayload(Schema):
+    """Body for the /reorder endpoints — ids in the new display order."""
+
+    ids: list[int] = Field(..., min_length=1, description="IDs in the new display order")
+    

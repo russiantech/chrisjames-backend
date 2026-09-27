@@ -1,0 +1,34 @@
+# --- core ---------------------------------------------------------------
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+python-multipart>=0.0.9
+email-validator>=2.1.0
+
+# --- database -----------------------------------------------------------
+SQLAlchemy>=2.0.30
+alembic>=1.13.0
+aiosqlite>=0.20.0          # development default
+asyncpg>=0.29.0            # production (PostgreSQL)
+
+# --- auth ---------------------------------------------------------------
+PyJWT>=2.8.0
+bcrypt>=4.1.0
+
+# --- content ------------------------------------------------------------
+markdown-it-py>=3.0.0
+bleach>=6.1.0
+Pygments>=2.18.0
+python-slugify>=8.0.0
+Pillow>=10.3.0             # image dimensions and placeholder colour
+
+# --- integrations (optional; enable what you use) -----------------------
+httpx>=0.27.0
+# stripe>=9.0.0
+# boto3>=1.34.0            # S3 / R2 storage backend
+
+# --- tests --------------------------------------------------------------
+pytest>=8.2.0
+pytest-asyncio>=0.23.0
+asgi-lifespan>=2.1.0

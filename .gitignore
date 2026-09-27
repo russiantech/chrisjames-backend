@@ -1,0 +1,44 @@
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.db
+*.db-shm
+*.db-wal
+.pytest_cache/
+
+# environment
+.env
+
+# node
+node_modules/
+dist/
+
+# uploads
+backend/media/uploads/
+
+# editors / os
+.DS_Store
+.vscode/
+.idea/
+
+
+# Temporary and backup files
+*~
+*.swp
+
+# Specific patterns requested
+# ignore any folder named "_" at repo root or nested
+_/
+_*/
+
+# ignore files whose name end with an underscore followed by one or more digits
+# matches examples like: *_0.html, *_1.tsx, *_3.ts, *_0.jsx and folders like name_1/
+*_[0-9]*
+
+# dotenv variants often used
+.env.local
+.env.development
+.env.production
+.env.test

@@ -11,8 +11,8 @@ SQLAlchemy[asyncio]>=2.0.30
 alembic>=1.13.0
 aiosqlite>=0.20.0          # development default
 asyncpg>=0.29.0            # production (PostgreSQL)
-
 greenlet>=3.0.0            # required by SQLAlchemy asyncio — add explicitly
+psycopg[binary]>=3.1.0    # SQLAlchemy 2.0 default PostgreSQL driver (sync + async)
 
 # --- auth ---------------------------------------------------------------
 PyJWT>=2.8.0
